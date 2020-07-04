@@ -1,0 +1,86 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <div class="collapse navbar-collapse" id="navbarText">
+    <div id=navi>
+      <ul id=unorder class="nav nav-pills">
+        <a class="nav-link register-custom" routerLink="userRole">Event Details</a>
+      </ul>
+    </div>
+
+  </div>
+  <td><img src="https://552350tripservice.s3.us-east-2.amazonaws.com/assets/userLogo.png"> </td>
+  <td>
+    <tr>{{token.getUsername()}} </tr>
+    <tr><a class="logout" routerLinkActive="active-link" routerLink="/login">Logout</a></tr>
+  </td>
+
+
+</nav>
+
+<br/>
+<!-- <router-outlet></router-outlet> -->
+<div class="errors">{{message}}</div>
+<div>
+  <div class="example-container mat-elevation-z8 " #TABLE>
+    <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+      <ng-container matColumnDef="select">
+        <th  mat-header-cell *matHeaderCellDef>Check</th>
+        <td mat-cell *matCellDef="let element" >
+          <mat-checkbox [(ngModel)]="element.select"></mat-checkbox>
+      </td>
+      </ng-container>
+      <ng-container matColumnDef="eventId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Event Id </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.eventId}} </td>
+      </ng-container>
+      <ng-container matColumnDef="eventName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> EventName </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.eventName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="eventDesc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> EventDesc </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.eventDesc}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="eventLocation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.eventLocation}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="venueAddress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> VenueAddress </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.venueAddress}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="eventDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> EventDate </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.eventDate | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.status}} </td>
+      </ng-container>
+      <ng-container matColumnDef="pocId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> PocId </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.pocId}} </td>
+      </ng-container>
+      <ng-container matColumnDef="pocName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> PocName </th>
+        <td mat-cell *matCellDef="let entry"> {{entry.pocName}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- </div> -->
+    </table>
+
+    <div align="left">
+      <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+  <td width="70%"></td>
+</div>
+
+<div>
+  <button type="submit" (click)="onSubmit($event)"  class="btn btn-primary">Register</button>
+</div>
