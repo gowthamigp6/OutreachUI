@@ -7,19 +7,14 @@ import { EventSummaryDetails} from '../model/event.model';
 @Injectable()
 export class UserRoleService {
 
-  private eventUrl = window["apiBaseUrl2"]+"/eventDetails";
-  private tripUrl = window["apiBaseUrl2"]+"/summaryDetails";
+  private eventUrl = window["apiBaseUrl"]+"registerDetails";
+  private tripUrl = window["apiBaseUrl"]+"eventDetails";
 
   constructor(private http: HttpClient) { }
 
-  getTripDetails(): Observable<EventSummaryDetails[]>{
-	  return this.http.get<EventSummaryDetails[]>(this.tripUrl+"/get");
-  }
-
   getCusTripDetails(): Observable<EventSummaryDetails[]>{
-	  return this.http.get<EventSummaryDetails[]>(this.tripUrl+"/getSummaryEventDetails");
+	  return this.http.get<EventSummaryDetails[]>(this.tripUrl+"/getEventDetails");
   }
-
   
   saveEventResponse(feedbackDetails: String[],associateId: String){
     console.log("this-->");

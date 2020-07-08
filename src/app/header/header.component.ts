@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-    this.eventService.getTripDetails().subscribe(
+    this.eventService.getCusTripDetails().subscribe(
       trip => {
         this.dataSource.data = trip as EventSummaryDetails[];
 
